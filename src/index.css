@@ -43,15 +43,19 @@ All colors MUST be HSL.
     --birthday-pink: 340 80% 75%;
     --birthday-purple: 280 60% 70%;
     --birthday-gold: 45 100% 75%;
+    --crimson: 348 83% 47%;
+    --crimson-dark: 348 83% 35%;
+    --crimson-light: 348 83% 60%;
 
     /* Gradients */
     --gradient-birthday: linear-gradient(135deg, hsl(320 70% 60%), hsl(280 70% 65%));
     --gradient-confetti: linear-gradient(45deg, hsl(320 70% 60%), hsl(280 70% 65%), hsl(50 90% 70%));
-    --gradient-envelope: linear-gradient(135deg, hsl(45 100% 75%), hsl(50 90% 70%));
+    --gradient-envelope: linear-gradient(135deg, hsl(348 83% 47%), hsl(348 83% 35%));
+    --gradient-envelope-flap: linear-gradient(135deg, hsl(348 83% 35%), hsl(348 83% 25%));
 
     /* Shadows */
     --shadow-birthday: 0 10px 30px -5px hsl(320 70% 60% / 0.3);
-    --shadow-envelope: 0 5px 20px -5px hsl(45 100% 75% / 0.4);
+    --shadow-envelope: 0 8px 25px -5px hsl(348 83% 47% / 0.4);
     --shadow-glow: 0 0 30px hsl(320 70% 60% / 0.5);
 
     --radius: 0.5rem;
@@ -172,13 +176,96 @@ All colors MUST be HSL.
   }
 
   /* Envelope animation */
+  .envelope-closed {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .envelope-closed:hover {
+    transform: scale(1.05);
+  }
+
   .envelope-flap {
-    transform-origin: top;
-    transition: transform 0.6s ease-in-out;
+    transform-origin: bottom center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .envelope-open .envelope-flap {
-    transform: rotateX(180deg);
+    transform: rotateX(-180deg);
+  }
+
+  .envelope-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    animation: modal-fade-in 0.3s ease-out;
+  }
+
+  .envelope-content {
+    width: 90%;
+    max-width: 500px;
+    height: 50vh;
+    background: var(--gradient-envelope);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: var(--shadow-envelope);
+    animation: envelope-expand 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .envelope-body {
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-envelope);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .envelope-flap-large {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: var(--gradient-envelope-flap);
+    transform-origin: bottom center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    z-index: 10;
+  }
+
+  .envelope-content.opened .envelope-flap-large {
+    transform: rotateX(-180deg);
+  }
+
+  .envelope-interior {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background: hsl(var(--background));
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.4s;
+  }
+
+  .envelope-content.opened .envelope-interior {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -199,6 +286,26 @@ All colors MUST be HSL.
   }
   51%, 100% {
     opacity: 0;
+  }
+}
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes envelope-expand {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 

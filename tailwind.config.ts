@@ -69,6 +69,11 @@ export default {
 					pink: 'hsl(var(--birthday-pink))',
 					purple: 'hsl(var(--birthday-purple))',
 					gold: 'hsl(var(--birthday-gold))'
+				},
+				crimson: {
+					DEFAULT: 'hsl(var(--crimson))',
+					dark: 'hsl(var(--crimson-dark))',
+					light: 'hsl(var(--crimson-light))'
 				}
 			},
 			borderRadius: {
