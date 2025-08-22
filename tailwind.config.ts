@@ -61,6 +61,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				birthday: {
+					primary: 'hsl(var(--birthday-primary))',
+					secondary: 'hsl(var(--birthday-secondary))',
+					accent: 'hsl(var(--birthday-accent))',
+					pink: 'hsl(var(--birthday-pink))',
+					purple: 'hsl(var(--birthday-purple))',
+					gold: 'hsl(var(--birthday-gold))'
 				}
 			},
 			borderRadius: {
