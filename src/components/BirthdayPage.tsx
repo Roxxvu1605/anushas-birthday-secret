@@ -35,17 +35,19 @@ const BirthdayPage = () => {
     <div className="min-h-screen flex flex-col relative z-10">
       {/* Background music */}
       <audio ref={audioRef} loop>
-        <source src="/birthday-song.mp3" type="audio/mpeg" />
-        {/* Add your MP3 file to the public folder */}
+        <source src="/birthday-instrumental.mp3" type="audio/mpeg" />
+        {/* Add your birthday instrumental MP3 file to the public folder */}
       </audio>
 
       {/* Top section - Photo */}
       <div className="h-1/3 flex items-center justify-center p-4 pt-8">
         <div className="w-full max-w-sm">
-          <div className="aspect-square w-full bg-gradient-to-br from-birthday-primary to-birthday-secondary rounded-2xl birthday-shadow flex items-center justify-center text-white font-bold text-lg bounce-in">
-            📷 Your Beautiful Photo
-            <br />
-            <span className="text-sm font-normal opacity-80">(Replace this placeholder)</span>
+          <div className="aspect-square w-full rounded-2xl birthday-shadow overflow-hidden bounce-in">
+            <img 
+              src="/photo1.png" 
+              alt="Beautiful photo" 
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
@@ -72,7 +74,7 @@ const BirthdayPage = () => {
 
         {/* Music control hint */}
         <div className="text-center text-xs text-muted-foreground">
-          🎵 Background music: Add birthday-song.mp3 to public folder
+          🎵 Background music: Add birthday-instrumental.mp3 to public folder
         </div>
       </div>
     </div>

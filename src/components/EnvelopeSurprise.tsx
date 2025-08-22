@@ -74,11 +74,13 @@ const EnvelopeSurprise = () => {
               {/* Interior content */}
               <div className="envelope-interior">
                 <div className="space-y-4 text-center">
-                  {/* Placeholder for image */}
-                  <div className="w-full max-w-xs h-40 bg-gradient-to-br from-birthday-pink to-birthday-purple rounded-lg flex items-center justify-center text-white font-medium text-sm">
-                    📸 Your Special Photo
-                    <br />
-                    <span className="text-xs opacity-80">(Replace this placeholder)</span>
+                  {/* Special photo */}
+                  <div className="w-full max-w-xs h-40 rounded-lg overflow-hidden">
+                    <img 
+                      src="/photo2.png" 
+                      alt="Special photo" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   
                   <p className="text-base font-medium text-foreground">
